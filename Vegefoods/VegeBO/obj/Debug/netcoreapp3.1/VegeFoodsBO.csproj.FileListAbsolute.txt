@@ -1,0 +1,14 @@
+C:\Users\HP\source\repos\Vegefoods\VegeBO\bin\Debug\netcoreapp3.1\VegeFoodsBO.deps.json
+C:\Users\HP\source\repos\Vegefoods\VegeBO\bin\Debug\netcoreapp3.1\VegeFoodsBO.dll
+C:\Users\HP\source\repos\Vegefoods\VegeBO\bin\Debug\netcoreapp3.1\VegeFoodsBO.pdb
+C:\Users\HP\source\repos\Vegefoods\VegeBO\bin\Debug\netcoreapp3.1\VegeFoodsDO.dll
+C:\Users\HP\source\repos\Vegefoods\VegeBO\bin\Debug\netcoreapp3.1\VegeFoodsEntities.dll
+C:\Users\HP\source\repos\Vegefoods\VegeBO\bin\Debug\netcoreapp3.1\VegeFoodsDO.pdb
+C:\Users\HP\source\repos\Vegefoods\VegeBO\bin\Debug\netcoreapp3.1\VegeFoodsEntities.pdb
+C:\Users\HP\source\repos\Vegefoods\VegeBO\obj\Debug\netcoreapp3.1\VegeFoodsBO.csprojAssemblyReference.cache
+C:\Users\HP\source\repos\Vegefoods\VegeBO\obj\Debug\netcoreapp3.1\VegeFoodsBO.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\Vegefoods\VegeBO\obj\Debug\netcoreapp3.1\VegeFoodsBO.AssemblyInfo.cs
+C:\Users\HP\source\repos\Vegefoods\VegeBO\obj\Debug\netcoreapp3.1\VegeFoodsBO.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\Vegefoods\VegeBO\obj\Debug\netcoreapp3.1\VegeFoodsBO.csproj.CopyComplete
+C:\Users\HP\source\repos\Vegefoods\VegeBO\obj\Debug\netcoreapp3.1\VegeFoodsBO.dll
+C:\Users\HP\source\repos\Vegefoods\VegeBO\obj\Debug\netcoreapp3.1\VegeFoodsBO.pdb

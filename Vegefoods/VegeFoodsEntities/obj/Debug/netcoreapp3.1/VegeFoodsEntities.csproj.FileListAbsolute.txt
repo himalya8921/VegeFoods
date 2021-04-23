@@ -1,0 +1,12 @@
+C:\Users\HP\source\repos\Vegefoods\VegeFoodsEntities\bin\Debug\netcoreapp3.1\VegeFoodsEntities.deps.json
+C:\Users\HP\source\repos\Vegefoods\VegeFoodsEntities\bin\Debug\netcoreapp3.1\VegeFoodsEntities.runtimeconfig.json
+C:\Users\HP\source\repos\Vegefoods\VegeFoodsEntities\bin\Debug\netcoreapp3.1\VegeFoodsEntities.runtimeconfig.dev.json
+C:\Users\HP\source\repos\Vegefoods\VegeFoodsEntities\bin\Debug\netcoreapp3.1\VegeFoodsEntities.dll
+C:\Users\HP\source\repos\Vegefoods\VegeFoodsEntities\bin\Debug\netcoreapp3.1\VegeFoodsEntities.pdb
+C:\Users\HP\source\repos\Vegefoods\VegeFoodsEntities\obj\Debug\netcoreapp3.1\VegeFoodsEntities.csprojAssemblyReference.cache
+C:\Users\HP\source\repos\Vegefoods\VegeFoodsEntities\obj\Debug\netcoreapp3.1\VegeFoodsEntities.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\Vegefoods\VegeFoodsEntities\obj\Debug\netcoreapp3.1\VegeFoodsEntities.AssemblyInfo.cs
+C:\Users\HP\source\repos\Vegefoods\VegeFoodsEntities\obj\Debug\netcoreapp3.1\VegeFoodsEntities.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\Vegefoods\VegeFoodsEntities\obj\Debug\netcoreapp3.1\VegeFoodsEntities.dll
+C:\Users\HP\source\repos\Vegefoods\VegeFoodsEntities\obj\Debug\netcoreapp3.1\VegeFoodsEntities.pdb
+C:\Users\HP\source\repos\Vegefoods\VegeFoodsEntities\obj\Debug\netcoreapp3.1\VegeFoodsEntities.genruntimeconfig.cache
