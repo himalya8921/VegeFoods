@@ -19,17 +19,17 @@ namespace VegeFoodsBO.Interface
 
         public int AddToCart(UserCart userCart);
 
-        public int DeleteFromWishlist(long productId, int userId);
+        public int DeleteFromWishlist(long productId, long userId);
 
-        public int DeleteFromCart(long productId, int userId);
+        public int DeleteFromCart(long productId, long userId);
 
         public long GetUserTotal(long userId);
 
-        public long AuthenticateUser(Users user);
+        public Users AuthenticateUser(Users user);
 
         public void UpdateProductQuantity(long productId, long quantity);
 
-        public List<UserCart> GetUserProducts(int userId);
+        public List<UserCart> GetUserProducts(long userId);
 
         public List<Products> Pagination(int PageNumber, int PageSize, List<Products> products);
 

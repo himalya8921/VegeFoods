@@ -49,12 +49,12 @@ namespace VegeFoodsBO
             return _vegeDataAccess.AddToCart(userCart);
         }
 
-        public int DeleteFromWishlist(long productId, int userId)
+        public int DeleteFromWishlist(long productId, long userId)
         {
             return _vegeDataAccess.DeleteFromWishlist(productId, userId);
         }
 
-        public int DeleteFromCart(long productId, int userId)
+        public int DeleteFromCart(long productId, long userId)
         {
             return _vegeDataAccess.DeleteFromCart(productId, userId);
         }
@@ -63,7 +63,7 @@ namespace VegeFoodsBO
         {
             return _vegeDataAccess.GetUserTotal( userId);
         }
-        public long AuthenticateUser(Users user)
+        public Users AuthenticateUser(Users user)
         {
             return _vegeDataAccess.AuthenticateUser(user);
         }
@@ -73,7 +73,7 @@ namespace VegeFoodsBO
              _vegeDataAccess.UpdateProductQuantity(productId, quantity);
         }
 
-        public List<UserCart> GetUserProducts(int userId)
+        public List<UserCart> GetUserProducts(long userId)
         {
            return _vegeDataAccess.GetUserProducts(userId);
         }

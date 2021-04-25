@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -36,9 +37,9 @@ namespace Vegefoods
 
             services.ConfigureApplicationCookie(options =>
             {
-                options.LoginPath = "/Home/Index";
-                options.LogoutPath = "/Home/Index";
-                options.AccessDeniedPath = "/Home/Index";
+                options.LoginPath = "/Account/Login";
+                options.LogoutPath = "/Account/Logout";
+                options.AccessDeniedPath = "/Account/Index";
                 options.SlidingExpiration = true;
                 options.ExpireTimeSpan = new TimeSpan(30, 0, 0, 0);
 
@@ -85,7 +86,7 @@ namespace Vegefoods
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Account}/{action=Login}/{id?}");
             });
         }
     }

@@ -3,9 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using VegeFoodsEntities.CustomEntities;
 
-// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
-// If you have enabled NRTs for your project, then un-comment the following line:
-// #nullable disable
+#nullable disable
 
 namespace VegeFoodsEntities.Entities
 {
@@ -21,29 +19,34 @@ namespace VegeFoodsEntities.Entities
         }
 
         public virtual DbSet<Products> Products { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<UserBilling> UserBilling { get; set; }
         public virtual DbSet<UserCart> UserCart { get; set; }
         public virtual DbSet<UserWishlist> UserWishlist { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
 
         public virtual DbSet<UserWishlistModel> UserWishlistModel { get; set; }
 
         public virtual DbSet<UserCartModel> UserCartModel { get; set; }
 
+
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Data Source=LAPTOP-LI4AMOA3;Database=VegeFoodsdb;User Id=admin;Password=Admin@123456;Trusted_Connection=True;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasAnnotation("Relational:Collation", "Latin1_General_CI_AI");
+
             modelBuilder.Entity<Products>(entity =>
             {
-                entity.HasKey(e => e.ProductId);
+                
+                 entity.HasKey(e => e.ProductId);
 
                 entity.Property(e => e.ProductDescription)
                     .IsRequired()
@@ -58,9 +61,27 @@ namespace VegeFoodsEntities.Entities
                     .IsUnicode(false);
             });
 
+            modelBuilder.Entity<Users>(entity =>
+            {
+
+                entity.HasKey(e => e.UserId);
+
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Username)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+            });
+
             modelBuilder.Entity<UserBilling>(entity =>
             {
                 entity.HasKey(e => e.BillingId);
+
+                entity.ToTable("UserBilling");
 
                 entity.Property(e => e.EmailAddress)
                     .IsRequired()
@@ -105,6 +126,8 @@ namespace VegeFoodsEntities.Entities
 
             modelBuilder.Entity<UserCart>(entity =>
             {
+                entity.ToTable("UserCart");
+
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.UserCart)
                     .HasForeignKey(d => d.ProductId)
@@ -120,6 +143,8 @@ namespace VegeFoodsEntities.Entities
 
             modelBuilder.Entity<UserWishlist>(entity =>
             {
+                entity.ToTable("UserWishlist");
+
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.UserWishlist)
                     .HasForeignKey(d => d.ProductId)
@@ -133,24 +158,10 @@ namespace VegeFoodsEntities.Entities
                     .HasConstraintName("FK_UserWishlist_User");
             });
 
-            modelBuilder.Entity<Users>(entity =>
-            {
-                entity.HasKey(e => e.UserId);
-
-                entity.Property(e => e.Password)
-                    .IsRequired()
-                    .HasMaxLength(200)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Username)
-                    .IsRequired()
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-            });
-
             modelBuilder.Entity<UserCartModel>(entity => { });
 
             modelBuilder.Entity<UserWishlistModel>(entity => { });
+
 
             OnModelCreatingPartial(modelBuilder);
         }

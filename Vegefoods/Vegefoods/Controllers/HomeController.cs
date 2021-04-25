@@ -19,9 +19,9 @@ using VegeFoodsEntities.Entities;
 
 namespace Vegefoods.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
- 
         private readonly IVegeBusinessAccess _vegeBusinessAccess;
 
         public HomeController(IVegeBusinessAccess vegeBusinessAccess)
@@ -31,23 +31,44 @@ namespace Vegefoods.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View("Login");
+            return View();
         }
 
-        public  IActionResult Privacy()
+        public IActionResult Privacy()
         {
             return View();
         }
 
+        public string getRoleType(int id)
+        {
+            switch (id)
+            {
+                case 1:
+                    return "user";
+                    break;
+
+                case 2:
+                    return "admin";
+                    break;
+
+
+                default:
+                    return "user";
+
+            }
+        }
+
         public async Task<IActionResult> Login(Users user)
         {
-            var userId = _vegeBusinessAccess.AuthenticateUser(user);
-            if (ModelState.IsValid)
+            Users userObj = _vegeBusinessAccess.AuthenticateUser(user);
+
+            string role = this.getRoleType((int)userObj.Role);
+            if (ModelState.IsValid && userObj.UserId != 0)
             {
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Role , "Admin"),
-                    new Claim("UserId", userId.ToString()),
+                    new Claim(ClaimTypes.Role,role),
+                    new Claim(ClaimTypes.Sid, userObj.UserId.ToString()),
 
                 };
 
@@ -61,17 +82,21 @@ namespace Vegefoods.Controllers
 
                 return View("Index");
             }
+            else
+            {
+                ViewBag.ErrorMessage = "User Not Found";
+            }
             return View();
         }
 
         public IActionResult ProductSingle(long productId)
         {
             if (productId == 0)
-                productId =  _vegeBusinessAccess.GetFirstProduct();
+                productId = _vegeBusinessAccess.GetFirstProduct();
 
             Products productObj = _vegeBusinessAccess.GetProductById(productId);
             return View(productObj);
-         }
+        }
 
 
         [HttpPost]
@@ -80,21 +105,15 @@ namespace Vegefoods.Controllers
             UserCart obj = new UserCart();
             Products product = _vegeBusinessAccess.GetProductById(id);
 
-            obj.UserId = 1;
+            var user = HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme).Result;
+            var userId = user.Principal.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Sid).Value;
+
+            obj.UserId = Convert.ToInt64(userId);
             obj.ProductId = id;
             obj.Quantity = quantity;
             obj.Price = quantity * product.ProductPrice;
 
             _vegeBusinessAccess.AddToCart(obj);
-            return View("Index");
-        }
-    
-
-
-        public IActionResult catchh(Products product, int quantity)
-        {
-            ViewBag.Quantity = quantity;
-            var temp = Convert.ToInt64(TempData["Quantity"]);
             return View("Index");
         }
 
@@ -108,12 +127,15 @@ namespace Vegefoods.Controllers
             return View();
         }
 
+
         public IActionResult Cart()
         {
-            List<UserCartModel> userList = _vegeBusinessAccess.GetUserCart(1);
+            var user = HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme).Result;
+            var userId = user.Principal.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Sid).Value;
+            List<UserCartModel> userList = _vegeBusinessAccess.GetUserCart(Convert.ToInt64(userId));
 
             var sum = 0;
-            foreach(var item in userList)
+            foreach (var item in userList)
             {
                 sum = (int)(sum + item.Price);
             }
@@ -124,17 +146,21 @@ namespace Vegefoods.Controllers
 
         public IActionResult Checkout()
         {
-            ViewBag.total = _vegeBusinessAccess.GetUserTotal(1);
+            var user = HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme).Result;
+            var userId = user.Principal.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Sid).Value;
+            ViewBag.total = _vegeBusinessAccess.GetUserTotal(Convert.ToInt64(userId));
             return View();
         }
 
         [HttpPost]
         public IActionResult SaveBillingDetails(UserBilling userBill)
         {
-            userBill.TotalBill = _vegeBusinessAccess.GetUserTotal(1);
+            var user = HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme).Result;
+            var userId = user.Principal.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Sid).Value;
+            userBill.TotalBill = _vegeBusinessAccess.GetUserTotal(Convert.ToInt64(userId));
             _vegeBusinessAccess.SaveBillingDetails(userBill);
 
-            List<UserCart> userCartList = _vegeBusinessAccess.GetUserProducts(1);
+            List<UserCart> userCartList = _vegeBusinessAccess.GetUserProducts(Convert.ToInt64(userId));
 
             foreach (var item in userCartList)
             {
@@ -146,10 +172,12 @@ namespace Vegefoods.Controllers
 
         public IActionResult SaveBillingDetails()
         {
+            var user = HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme).Result;
+            var userId = user.Principal.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Sid).Value;
 
-           List<UserCart> userCartList = _vegeBusinessAccess.GetUserProducts(1);
+            List<UserCart> userCartList = _vegeBusinessAccess.GetUserProducts(Convert.ToInt64(userId));
 
-            foreach(var item in userCartList)
+            foreach (var item in userCartList)
             {
                 _vegeBusinessAccess.UpdateProductQuantity(item.ProductId, item.Quantity);
             }
@@ -161,8 +189,6 @@ namespace Vegefoods.Controllers
         [Authorize]
         public IActionResult Contact()
         {
-            var user = HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme).Result;
-            var temp1 = user.Principal.Claims.FirstOrDefault(x=>x.Type =="Id");
             return View();
         }
 
@@ -178,69 +204,76 @@ namespace Vegefoods.Controllers
         }
 
 
-        
+
         public IActionResult Shop(int PageNumber = 1)
         {
             List<Products> productList = _vegeBusinessAccess.GetProducts();
             ViewBag.TotalPages = Math.Ceiling(productList.Count() / 12.0);
             ViewBag.PageNumber = PageNumber;
 
-             productList =  _vegeBusinessAccess.Pagination(PageNumber,12, productList);
-        
+            productList = _vegeBusinessAccess.Pagination(PageNumber, 12, productList);
+
             return View(productList);
         }
 
         public IActionResult AddToWishlist(long id)
         {
+
+            var user = HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme).Result;
+            var userId = user.Principal.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Sid).Value;
             var productId = id;
             UserWishlist userWishObj = new UserWishlist();
-            userWishObj.UserId = 1;
+            userWishObj.UserId = Convert.ToInt64(userId);
             userWishObj.ProductId = id;
 
             if (productId != 0)
             {
                 _vegeBusinessAccess.AddToWishlist(userWishObj);
             }
-            //get the data from the database
+
             return RedirectToAction("Shop");
         }
 
 
         public IActionResult RemoveFromWishlist(int productId)
         {
-            _vegeBusinessAccess.DeleteFromWishlist(productId, 1);
+            var user = HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme).Result;
+            var userId = user.Principal.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Sid).Value;
+            _vegeBusinessAccess.DeleteFromWishlist(productId, Convert.ToInt64(userId));
             return RedirectToAction("Wishlist");
         }
 
         public IActionResult RemoveFromCart(int productId)
         {
-           _vegeBusinessAccess.DeleteFromCart(productId,1);
+            var user = HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme).Result;
+            var userId = user.Principal.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Sid).Value;
+            _vegeBusinessAccess.DeleteFromCart(productId, Convert.ToInt64(userId));
             return RedirectToAction("Cart");
         }
 
         public IActionResult Wishlist()
         {
-            List<UserWishlistModel> userList = _vegeBusinessAccess.GetUserWishlist(1);
+            var user = HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme).Result;
+            var userId = user.Principal.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Sid).Value;
+            List<UserWishlistModel> userList = _vegeBusinessAccess.GetUserWishlist(Convert.ToInt64(userId));
 
-             //get the data from the database
             return View(userList);
         }
 
 
-            public IActionResult AddToCart(int productId,int quantity,int price)
+        public IActionResult AddToCart(int productId, int quantity, int price)
         {
-                //get id from cookie
-                //id,userid,prodId,Quantity,price
 
-                UserCart userObj = new UserCart();
-                userObj.UserId = 1;
-                userObj.ProductId = productId;
-                userObj.Quantity = quantity;
-                userObj.Price = price;
+            var user = HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme).Result;
+            var userId = user.Principal.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Sid).Value;
+            UserCart userObj = new UserCart();
+            userObj.UserId = Convert.ToInt64(userId);
+            userObj.ProductId = productId;
+            userObj.Quantity = quantity;
+            userObj.Price = price;
 
-            //Add or update object
             _vegeBusinessAccess.AddToCart(userObj);
-            
+
             return RedirectToAction("Shop");
         }
 
@@ -249,5 +282,7 @@ namespace Vegefoods.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
     }
 }

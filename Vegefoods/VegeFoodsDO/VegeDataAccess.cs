@@ -61,14 +61,14 @@ namespace VegeFoodsDO
 
         }
 
-        public long AuthenticateUser(Users user)
+        public Users AuthenticateUser(Users user)
         {
             Users userObj = (Users)_vegeDbContext.Users.FirstOrDefault(x => x.Username == user.Username && x.Password == user.Password);
             if(userObj != null)
             {
-                return userObj.UserId;
+                return userObj;
             }
-            return 0;
+            return null;
         }
         public Products GetProductById(long productId)
         {
@@ -143,7 +143,7 @@ namespace VegeFoodsDO
         }
 
 
-        public int DeleteFromWishlist(long productId,int userId)
+        public int DeleteFromWishlist(long productId, long userId)
         {
             var Obj = _vegeDbContext.UserWishlist.FirstOrDefault(x => x.ProductId == productId
             && x.UserId == userId);
@@ -153,7 +153,7 @@ namespace VegeFoodsDO
             return _vegeDbContext.SaveChanges();
         }
 
-        public int DeleteFromCart(long productId, int userId)
+        public int DeleteFromCart(long productId, long userId)
         {
             var Obj = _vegeDbContext.UserCart.FirstOrDefault(x => x.ProductId == productId
             && x.UserId == userId);
@@ -163,7 +163,7 @@ namespace VegeFoodsDO
             return _vegeDbContext.SaveChanges();
         }
 
-        public List<UserCart> GetUserProducts(int userId)
+        public List<UserCart> GetUserProducts(long userId)
         {
             List<UserCart> Obj = _vegeDbContext.UserCart.Where(x => x.UserId == userId).ToList();
 
