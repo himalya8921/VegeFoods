@@ -8,11 +8,6 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 mb-5 ftco-animate">
-
-
-                @*<img class="img-fluid" src="@("~/ProductImage/"+@item.ProductImage)" asp-append-version="true" width="250px" height="250px" />*@
-                @*<td class="image-prod"><div class="img"><img class="img-fluid" src="@("~/ProductImage/"+@item.ProductImage)" asp-append-version="true" width="100px" height="100px" /></div></td>*@
-
                 <a href="images/product-1.jpg" class="image-popup"><img class="img-fluid" src="@("~/ProductImage/"+@Model.ProductImage)" asp-append-version="true" /></a>
             </div>
 
@@ -77,8 +72,6 @@
         </div>
     </div>
 </section>
-@ViewBag.qty
-
 <!-- loader -->
 <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
 
@@ -107,27 +100,16 @@
 
         var quantitiy = 0;
         $('.quantity-right-plus').click(function (e) {
-
-
             var quantity = parseInt($('#automation-add-cart-quantity').val());
 
             if (quantitiy < @ViewBag.qty) {
                 $('#automation-add-cart-quantity').val(quantity + 1);
             }
-
-            // Increment
-
         });
 
         $('.quantity-left-minus').click(function (e) {
-            // Stop acting like a button
-            // e.preventDefault();
-            // Get the field name
             var quantity = parseInt($('#automation-add-cart-quantity').val());
 
-            // If is not undefined
-
-            // Increment
             if (quantity > 1) {
                 $('#automation-add-cart-quantity').val(quantity - 1);
             }

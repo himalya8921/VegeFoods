@@ -9,18 +9,14 @@
 <div class="row justify-content-center">
     <div class="col-xl-7">
 
-
-
-        @*<form action="#" class="billing-form">*@
         <h3 class="mb-4 billing-heading">Billing Details</h3>
         <div class="row align-items-end">
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="firstname">Firt Name</label>
-                    @*<input id="automation-first_name" type="text" class="form-control" placeholder="">*@
+
                     @Html.LabelFor(model => model.FirstName)
                     @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { id = "automation-first_name", @class = "form-control" } })
-
                     @Html.ValidationMessageFor(model => model.FirstName, "", new { id = "FirstName_ErrorMessage", @class = "text-danger" })
 
 
@@ -32,14 +28,8 @@
 
                     @Html.LabelFor(model => model.LastName)
                     @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { id = "automation-last_name", @class = "form-control" } })
-
                     @Html.ValidationMessageFor(model => model.LastName, "", new { id = "LastName_ErrorMessage", @class = "text-danger" })
 
-
-
-
-                    @*<label for="lastname">Last Name</label>
-                        <input id="automation-last_name" type="text" class="form-control" placeholder="">*@
                 </div>
             </div>
             <div class="w-100"></div>
@@ -49,27 +39,18 @@
 
                     @Html.LabelFor(model => model.State)
                     @Html.EditorFor(model => model.State, new { htmlAttributes = new { id = "automation-state", @class = "form-control" } })
-
                     @Html.ValidationMessageFor(model => model.State, "", new { id = "State_ErrorMessage", @class = "text-danger" })
 
-
-
-                    @*<label for="country">State / Country</label>
-                        <input id="automation-state" type="text" class="form-control" placeholder="">*@
                 </div>
             </div>
             <div class="w-100"></div>
             <div class="col-md-6">
                 <div class="form-group">
 
-
                     @Html.LabelFor(model => model.StreetAddress)
                     @Html.EditorFor(model => model.StreetAddress, new { htmlAttributes = new { id = "automation-address", @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.StreetAddress, "", new { id = "StreetAddress_ErrorMessage", @class = "text-danger" })
 
-
-                    @*<label for="streetaddress">Street Address</label>
-                        <input id="automation-address" type="text" class="form-control" placeholder="House number and street name">*@
                 </div>
             </div>
             <div class="col-md-6">
@@ -81,47 +62,29 @@
             <div class="col-md-6">
                 <div class="form-group">
 
-
                     @Html.LabelFor(model => model.Town)
                     @Html.EditorFor(model => model.Town, new { htmlAttributes = new { id = "automation-city", @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Town, "", new { id = "Town_ErrorMessage", @class = "text-danger" })
 
-
-
-
-                    @*<label for="towncity">Town / City</label>
-                        <input id="automation-city" type="text" class="form-control" placeholder="">*@
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
 
-
                     @Html.LabelFor(model => model.PostCode)
                     @Html.EditorFor(model => model.PostCode, new { htmlAttributes = new { id = "automation-postcode", @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.PostCode, "", new { id = "PostCode_ErrorMessage", @class = "text-danger" })
 
-
-
-
-                    @*<label for="postcodezip">Postcode / ZIP *</label>
-                        <input id="automation-postcode" type="text" class="form-control" placeholder="">*@
                 </div>
             </div>
             <div class="w-100"></div>
             <div class="col-md-6">
                 <div class="form-group">
 
-
                     @Html.LabelFor(model => model.Phone)
                     @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { id = "automation-phone", @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Phone, "", new { id = "Phone_ErrorMessage", @class = "text-danger" })
 
-
-
-
-                    @*<label for="phone">Phone</label>
-                        <input id="automation-phone" type="text" class="form-control" placeholder="">*@
                 </div>
             </div>
             <div class="col-md-6">
@@ -131,17 +94,12 @@
                     @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { id = "automation-email", @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.EmailAddress, "", new { id = "EmailAddress_ErrorMessage", @class = "text-danger" })
 
-
-
-
-                    @*<label for="emailaddress">Email Address</label>
-                        <input id="automation-email" type="text" class="form-control" placeholder="">*@
                 </div>
             </div>
             <div class="w-100"></div>
 
         </div>
-        @*</form>*@<!-- END -->
+        
     </div>
     <div class="col-xl-5">
         <div class="row mt-5 pt-3">
@@ -183,10 +141,10 @@
                 </div>
             </div>
         </div>
-    </div> <!-- .col-md-8 -->
+    </div>
 </div>            }
         </div>
-    </section> <!-- .section -->
+    </section> 
 
     <section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
         <div class="container py-4">
@@ -239,30 +197,15 @@
 
             var quantitiy = 0;
             $('.quantity-right-plus').click(function (e) {
-
-                // Stop acting like a button
                 e.preventDefault();
-                // Get the field name
                 var quantity = parseInt($('#quantity').val());
-
-                // If is not undefined
-
                 $('#quantity').val(quantity + 1);
-
-
-                // Increment
 
             });
 
             $('.quantity-left-minus').click(function (e) {
-                // Stop acting like a button
                 e.preventDefault();
-                // Get the field name
                 var quantity = parseInt($('#quantity').val());
-
-                // If is not undefined
-
-                // Increment
                 if (quantity > 0) {
                     $('#quantity').val(quantity - 1);
                 }

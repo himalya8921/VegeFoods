@@ -22,22 +22,12 @@
                                 @foreach (var item in Model)
                                 {
                     <tr class="text-center">
-
-
-
-
                         <td class="product-remove">
                             <a class="img-prod automation-products-list-item" asp-controller="Home" asp-action="RemoveFromCart" asp-route-productId="@item.ProductId">
                                 <span class="ion-ios-close"></span>
                             </a>
                         </td>
-
-
-                        @*<img class="img-fluid" src="@("~/ProductImage/"+@item.ProductImage)" asp-append-version="true" width="250px" height="250px" />*@
-                        <td class="image-prod"><div class="img"><img class="img-fluid" src="@("~/ProductImage/"+@item.ProductImage)" asp-append-version="true" width="100px" height="100px" /></div></td>
-
-
-                        @*<td class="image-prod"><div class="img" style="background-image:url(images/product-3.jpg);"></div></td>*@
+                           <td class="image-prod"><div class="img"><img class="img-fluid" src="@("~/ProductImage/"+@item.ProductImage)" asp-append-version="true" width="100px" height="100px" /></div></td>
 
                         <td class="product-name">
                             <h3>@item.ProductName</h3>
@@ -53,7 +43,7 @@
                         </td>
 
                         <td class="total">$@item.Price</td>
-                    </tr><!-- END TR-->}
+                    </tr>}
 
                             </tbody>
                         </table>
@@ -141,9 +131,6 @@
         </div>
     </section>
     
-
-
-    <!-- loader -->
     <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
 
 
@@ -173,31 +160,18 @@
 
             var quantitiy = 0;
             $('.quantity-right-plus').click(function (e) {
-
-                // Stop acting like a button
                 e.preventDefault();
-                // Get the field name
                 var quantity = parseInt($('#quantity').val());
-
-                // If is not undefined
 
                 $('#quantity').val(quantity + 1);
 
 
-                // Increment
-
             });
 
             $('.quantity-left-minus').click(function (e) {
-                // Stop acting like a button
                 e.preventDefault();
-                // Get the field name
                 var quantity = parseInt($('#quantity').val());
-
-                // If is not undefined
-
-                // Increment
-                if (quantity > 0) {
+               if (quantity > 0) {
                     $('#quantity').val(quantity - 1);
                 }
             });

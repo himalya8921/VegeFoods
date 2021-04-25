@@ -39,10 +39,9 @@
         <div>
             <p> Invalid Username password</p>
         </div> }
-<h3>LogIn</h3> @*<form action="Login" class="bg-white p-5 contact-form" method="post">*@
+<h3>LogIn</h3> 
                 <div class="form-group">
-                    @*<input type="text" class="form-control" placeholder="Enter Username">*@
-
+                    
 
                     @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Username" } } )
 
@@ -50,15 +49,9 @@
 
                 </div>
                                 <div class="form-group">
-                                    @*<input type="text" class="form-control" placeholder="password">*@
-
-
+ 
                                     @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "password", placeholder = "Enter Password" } })
-
-                                    @*<input type="password" id="Password" name="Password" value="@Model.Password" class="form-control w-25 p-3"/>*@
-
                                     @Html.ValidationMessageFor(model => model.Password, "", new { id = "Password_ErrorMessage", @class = "text-danger" })
-
 
                                 </div>
 
