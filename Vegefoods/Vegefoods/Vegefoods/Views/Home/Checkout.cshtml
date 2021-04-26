@@ -1,0 +1,210 @@
+﻿@model VegeFoodsEntities.Entities.UserBilling
+ 
+    <img src="~/images/bg_1.jpg" height="500" width="1400" />
+
+    <section class="ftco-section">
+        <div class="container">
+            @using (Html.BeginForm("SaveBillingDetails", "Home", FormMethod.Post, new { id = "BillingForm", @class = "billing-form" }))
+            {
+<div class="row justify-content-center">
+    <div class="col-xl-7">
+
+        <h3 class="mb-4 billing-heading">Billing Details</h3>
+        <div class="row align-items-end">
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.FirstName)
+                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { id = "automation-first_name", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FirstName, "", new { id = "FirstName_ErrorMessage", @class = "text-danger" })
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.LastName)
+                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { id = "automation-last_name", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LastName, "", new { id = "LastName_ErrorMessage", @class = "text-danger" })
+
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md-12">
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.State)
+                    @Html.EditorFor(model => model.State, new { htmlAttributes = new { id = "automation-state", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.State, "", new { id = "State_ErrorMessage", @class = "text-danger" })
+
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.StreetAddress)
+                    @Html.EditorFor(model => model.StreetAddress, new { htmlAttributes = new { id = "automation-address", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.StreetAddress, "", new { id = "StreetAddress_ErrorMessage", @class = "text-danger" })
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Appartment, suite, unit etc: (optional)">
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.Town)
+                    @Html.EditorFor(model => model.Town, new { htmlAttributes = new { id = "automation-city", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Town, "", new { id = "Town_ErrorMessage", @class = "text-danger" })
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.PostCode)
+                    @Html.EditorFor(model => model.PostCode, new { htmlAttributes = new { id = "automation-postcode", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PostCode, "", new { id = "PostCode_ErrorMessage", @class = "text-danger" })
+
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.Phone)
+                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { id = "automation-phone", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Phone, "", new { id = "Phone_ErrorMessage", @class = "text-danger" })
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.EmailAddress)
+                    @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { id = "automation-email", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EmailAddress, "", new { id = "EmailAddress_ErrorMessage", @class = "text-danger" })
+
+                </div>
+            </div>
+            <div class="w-100"></div>
+
+        </div>
+        
+    </div>
+    <div class="col-xl-5">
+        <div class="row mt-5 pt-3">
+            <div class="col-md-12 d-flex mb-5">
+                <div class="cart-detail cart-total p-3 p-md-4">
+                    <h3 class="billing-heading mb-4">Cart Total</h3>
+                    <p class="d-flex">
+                        <span>Subtotal</span>
+                        <span>$@ViewBag.total</span>
+                    </p>
+                    <p class="d-flex">
+                        <span>Delivery</span>
+                        <span>$0.00</span>
+                    </p>
+                    <p class="d-flex">
+                        <span>Discount</span>
+                        <span>$0</span>
+                    </p>
+                    <hr>
+                    <p class="d-flex total-price">
+                        <span>Total</span>
+                        <span>$@ViewBag.total</span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="cart-detail p-3 p-md-4">
+                    <h3 class="billing-heading mb-4">Payment Method</h3>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="radio">
+                                <label><input type="radio" id="automation-cod" name="optradio" class="mr-2" checked> Cash On Delivery</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p><button type="button" onclick="ValidateBillingForm()" style=" BORDER: NONE"><a class="btn btn-primary py-3 px-4" id="automation-place-order">Place an order</a></button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>            }
+        </div>
+    </section> 
+
+    <section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
+        <div class="container py-4">
+            <div class="row d-flex justify-content-center py-5">
+                <div class="col-md-6">
+                    <h2 style="font-size: 22px;" class="mb-0">Subcribe to our Newsletter</h2>
+                    <span>Get e-mail updates about our latest shops and special offers</span>
+                </div>
+                <div class="col-md-6 d-flex align-items-center">
+                    <form action="#" class="subscribe-form">
+                        <div class="form-group d-flex">
+                            <input type="text" class="form-control" placeholder="Enter email address">
+                            <input type="submit" value="Subscribe" class="submit px-3">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+
+
+
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.easing.1.3.js"></script>
+    <script src="~/js/jquery.waypoints.min.js"></script>
+    <script src="~/js/jquery.stellar.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+
+    <script src="~/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/js/aos.js"></script>
+    <script src="~/js/jquery.animateNumber.min.js"></script>
+    <script src="~/js/bootstrap-datepicker.js"></script>
+    <script src="~/js/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="~/js/google-map.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/js/BillingValidations.js"></script>
+
+
+
+    <script>
+        $(document).ready(function () {
+
+            var quantitiy = 0;
+            $('.quantity-right-plus').click(function (e) {
+                e.preventDefault();
+                var quantity = parseInt($('#quantity').val());
+                $('#quantity').val(quantity + 1);
+
+            });
+
+            $('.quantity-left-minus').click(function (e) {
+                e.preventDefault();
+                var quantity = parseInt($('#quantity').val());
+                if (quantity > 0) {
+                    $('#quantity').val(quantity - 1);
+                }
+            });
+
+        });</script>
