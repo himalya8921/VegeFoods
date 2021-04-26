@@ -54,9 +54,10 @@ namespace Vegefoods.Controllers
         {
             Users userObj = _vegeBusinessAccess.AuthenticateUser(user);
 
-            string role = this.getRoleType((int)userObj.Role);
-            if (ModelState.IsValid && userObj.UserId != 0)
+            if (ModelState.IsValid && userObj != null)
             {
+                string role = this.getRoleType((int)userObj.Role);
+            
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Role,role),
@@ -77,8 +78,9 @@ namespace Vegefoods.Controllers
             else
             {
                 ViewBag.ErrorMessage = "User Not Found";
+                return View("Index");
             }
-            return View();
+            
         }
 
         public async Task<IActionResult> LogOut()
