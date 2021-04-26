@@ -17,5 +17,8 @@ namespace VegeFoodsEntities.Entities
         public string Phone { get; set; }
         public string EmailAddress { get; set; }
         public long? TotalBill { get; set; }
+        public DateTime? CreatedDate { get; set; }
+        public long? UpdatedBy { get; set; }
+        public DateTime? UpdatedDate { get; set; }
     }
 }

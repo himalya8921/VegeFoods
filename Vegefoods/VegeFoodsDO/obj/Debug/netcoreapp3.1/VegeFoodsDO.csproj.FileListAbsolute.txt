@@ -10,3 +10,15 @@ C:\Users\HP\source\repos\Vegefoods\VegeFoodsDO\obj\Debug\netcoreapp3.1\VegeFoods
 C:\Users\HP\source\repos\Vegefoods\VegeFoodsDO\obj\Debug\netcoreapp3.1\VegeFoodsDO.csproj.CopyComplete
 C:\Users\HP\source\repos\Vegefoods\VegeFoodsDO\obj\Debug\netcoreapp3.1\VegeFoodsDO.dll
 C:\Users\HP\source\repos\Vegefoods\VegeFoodsDO\obj\Debug\netcoreapp3.1\VegeFoodsDO.pdb
+C:\Users\HP\Desktop\New folder (2)\Vegefoods\VegeFoodsDO\obj\Debug\netcoreapp3.1\VegeFoodsDO.csprojAssemblyReference.cache
+C:\Users\HP\Desktop\New folder (2)\Vegefoods\VegeFoodsDO\obj\Debug\netcoreapp3.1\VegeFoodsDO.AssemblyInfoInputs.cache
+C:\Users\HP\Desktop\New folder (2)\Vegefoods\VegeFoodsDO\obj\Debug\netcoreapp3.1\VegeFoodsDO.AssemblyInfo.cs
+C:\Users\HP\Desktop\New folder (2)\Vegefoods\VegeFoodsDO\obj\Debug\netcoreapp3.1\VegeFoodsDO.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\New folder (2)\Vegefoods\VegeFoodsDO\obj\Debug\netcoreapp3.1\VegeFoodsDO.dll
+C:\Users\HP\Desktop\New folder (2)\Vegefoods\VegeFoodsDO\obj\Debug\netcoreapp3.1\VegeFoodsDO.pdb
+C:\Users\HP\Desktop\New folder (2)\Vegefoods\VegeFoodsDO\bin\Debug\netcoreapp3.1\VegeFoodsDO.deps.json
+C:\Users\HP\Desktop\New folder (2)\Vegefoods\VegeFoodsDO\bin\Debug\netcoreapp3.1\VegeFoodsDO.dll
+C:\Users\HP\Desktop\New folder (2)\Vegefoods\VegeFoodsDO\bin\Debug\netcoreapp3.1\VegeFoodsDO.pdb
+C:\Users\HP\Desktop\New folder (2)\Vegefoods\VegeFoodsDO\bin\Debug\netcoreapp3.1\VegeFoodsEntities.dll
+C:\Users\HP\Desktop\New folder (2)\Vegefoods\VegeFoodsDO\bin\Debug\netcoreapp3.1\VegeFoodsEntities.pdb
+C:\Users\HP\Desktop\New folder (2)\Vegefoods\VegeFoodsDO\obj\Debug\netcoreapp3.1\VegeFoodsDO.csproj.CopyComplete

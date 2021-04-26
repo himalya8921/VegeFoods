@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\source\\repos\\Vegefoods\\VegeFoodsEntities\\VegeFoodsEntities.csproj": {}
+    "C:\\Users\\HP\\Desktop\\New folder (2)\\Vegefoods\\VegeFoodsEntities\\VegeFoodsEntities.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\source\\repos\\Vegefoods\\VegeFoodsEntities\\VegeFoodsEntities.csproj": {
+    "C:\\Users\\HP\\Desktop\\New folder (2)\\Vegefoods\\VegeFoodsEntities\\VegeFoodsEntities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\source\\repos\\Vegefoods\\VegeFoodsEntities\\VegeFoodsEntities.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\Desktop\\New folder (2)\\Vegefoods\\VegeFoodsEntities\\VegeFoodsEntities.csproj",
         "projectName": "VegeFoodsEntities",
-        "projectPath": "C:\\Users\\HP\\source\\repos\\Vegefoods\\VegeFoodsEntities\\VegeFoodsEntities.csproj",
+        "projectPath": "C:\\Users\\HP\\Desktop\\New folder (2)\\Vegefoods\\VegeFoodsEntities\\VegeFoodsEntities.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\source\\repos\\Vegefoods\\VegeFoodsEntities\\obj\\",
+        "outputPath": "C:\\Users\\HP\\Desktop\\New folder (2)\\Vegefoods\\VegeFoodsEntities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",

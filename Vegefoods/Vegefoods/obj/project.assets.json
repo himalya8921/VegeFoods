@@ -8912,11 +8912,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\source\\repos\\Vegefoods\\Vegefoods\\Vegefoods.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\Desktop\\New folder (2)\\Vegefoods\\Vegefoods\\Vegefoods.csproj",
       "projectName": "Vegefoods",
-      "projectPath": "C:\\Users\\HP\\source\\repos\\Vegefoods\\Vegefoods\\Vegefoods.csproj",
+      "projectPath": "C:\\Users\\HP\\Desktop\\New folder (2)\\Vegefoods\\Vegefoods\\Vegefoods.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\source\\repos\\Vegefoods\\Vegefoods\\obj\\",
+      "outputPath": "C:\\Users\\HP\\Desktop\\New folder (2)\\Vegefoods\\Vegefoods\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8933,8 +8933,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\HP\\source\\repos\\Vegefoods\\VegeBO\\VegeFoodsBO.csproj": {
-              "projectPath": "C:\\Users\\HP\\source\\repos\\Vegefoods\\VegeBO\\VegeFoodsBO.csproj"
+            "C:\\Users\\HP\\Desktop\\New folder (2)\\Vegefoods\\VegeBO\\VegeFoodsBO.csproj": {
+              "projectPath": "C:\\Users\\HP\\Desktop\\New folder (2)\\Vegefoods\\VegeBO\\VegeFoodsBO.csproj"
             }
           }
         }

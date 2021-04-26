@@ -155,6 +155,7 @@ namespace Vegefoods.Controllers
         [HttpPost]
         public IActionResult SaveBillingDetails(UserBilling userBill)
         {
+            userBill.CreatedDate = DateTime.UtcNow;
             var user = HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme).Result;
             var userId = user.Principal.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Sid).Value;
             userBill.TotalBill = _vegeBusinessAccess.GetUserTotal(Convert.ToInt64(userId));
@@ -237,6 +238,7 @@ namespace Vegefoods.Controllers
 
         public IActionResult RemoveFromWishlist(int productId)
         {
+            //
             var user = HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme).Result;
             var userId = user.Principal.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Sid).Value;
             _vegeBusinessAccess.DeleteFromWishlist(productId, Convert.ToInt64(userId));

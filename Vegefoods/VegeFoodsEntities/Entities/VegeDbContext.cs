@@ -24,11 +24,10 @@ namespace VegeFoodsEntities.Entities
         public virtual DbSet<UserCart> UserCart { get; set; }
         public virtual DbSet<UserWishlist> UserWishlist { get; set; }
 
+
         public virtual DbSet<UserWishlistModel> UserWishlistModel { get; set; }
 
         public virtual DbSet<UserCartModel> UserCartModel { get; set; }
-
-
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -45,8 +44,7 @@ namespace VegeFoodsEntities.Entities
 
             modelBuilder.Entity<Products>(entity =>
             {
-                
-                 entity.HasKey(e => e.ProductId);
+                entity.HasKey(e => e.ProductId);
 
                 entity.Property(e => e.ProductDescription)
                     .IsRequired()
@@ -63,7 +61,6 @@ namespace VegeFoodsEntities.Entities
 
             modelBuilder.Entity<Users>(entity =>
             {
-
                 entity.HasKey(e => e.UserId);
 
                 entity.Property(e => e.Password)
@@ -82,6 +79,8 @@ namespace VegeFoodsEntities.Entities
                 entity.HasKey(e => e.BillingId);
 
                 entity.ToTable("UserBilling");
+
+                entity.Property(e => e.CreatedDate).HasColumnType("date");
 
                 entity.Property(e => e.EmailAddress)
                     .IsRequired()
@@ -122,6 +121,8 @@ namespace VegeFoodsEntities.Entities
                     .IsRequired()
                     .HasMaxLength(100)
                     .IsUnicode(false);
+
+                entity.Property(e => e.UpdatedDate).HasColumnType("date");
             });
 
             modelBuilder.Entity<UserCart>(entity =>
@@ -158,10 +159,11 @@ namespace VegeFoodsEntities.Entities
                     .HasConstraintName("FK_UserWishlist_User");
             });
 
+
+
             modelBuilder.Entity<UserCartModel>(entity => { });
 
             modelBuilder.Entity<UserWishlistModel>(entity => { });
-
 
             OnModelCreatingPartial(modelBuilder);
         }
